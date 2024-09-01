@@ -49,29 +49,38 @@
     });
   });
 
+ 
   function php_email_form_submit(thisForm, action, formData) {
+    console.log('Form data:', formData); // Debugging formData
+    console.log('Action URL:', action); // Debugging action URL
+    
     fetch(action, {
       method: 'POST',
       body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
     })
     .then(response => {
-      if( response.ok ) {
+      console.log('Response status:', response.status); // Debugging response status
+      if(response.ok) {
         return response.text();
       } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+        throw new Error(`${response.status} ${response.statusText} ${response.url}`);
       }
     })
     .then(data => {
+      console.log('Response data:', data); // Debugging response data
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      if (data.trim() === 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
+        thisForm.reset();
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action);
       }
     })
     .catch((error) => {
+      console.error('Error:', error); // Debugging error
       displayError(thisForm, error);
     });
   }
