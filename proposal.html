@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposal</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      overflow: hidden;
+      position: relative;
+      cursor: url('https://cdn-icons-png.flaticon.com/512/1346/1346882.png'), auto; /* Flower cursor */
+    }
+
+    /* Background animation */
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      width: 200px; /* Adjusted size */
+      height: 200px; /* Adjusted size */
+      background-color: rgba(255, 75, 92, 0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    body::before {
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    body::after {
+      bottom: -100px;
+      right: -100px;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
+    }
+
+    .proposal-container {
+      text-align: center;
+      background-color: white;
+      padding: 20px; /* Adjusted padding */
+      margin: 10px;
+      border-radius: 20px; /* Adjusted border-radius */
+      width: 90%; /* Adjusted width for responsiveness */
+      max-width: 300px; /* Max width to prevent excessive stretching */
+      height: auto; /* Adjusted height */
+      position: relative;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 24px; /* Adjusted font size */
+      color: #ff4b5c;
+      margin-bottom: 15px; /* Adjusted margin */
+      animation: fadeInDown 1s ease-out;
+    }
+
+    p {
+      font-size: 16px; /* Adjusted font size */
+      color: #333;
+      margin-bottom: 30px; /* Adjusted margin */
+    }
+
+    .btn {
+      background-color: #ff4b5c;
+      color: white;
+      border: none;
+      padding: 10px 20px; /* Adjusted padding */
+      font-size: 14px; /* Adjusted font size */
+      cursor: url('https://cdn-icons-png.flaticon.com/512/1346/1346882.png'), auto; /* Flower cursor */
+      border-radius: 20px; /* Adjusted border-radius */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      margin: 5px; /* Added margin for spacing */
+    }
+
+    .btn:hover {
+      background-color: #ff7487;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .message {
+      font-size: 16px; /* Adjusted font size */
+      color: #ff4b5c;
+      margin-top: 20px;
+      display: none;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    .message.show {
+      display: block;
+      opacity: 1;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+      20% {
+        transform: scale(1.1);
+      }
+      40% {
+        transform: scale(1);
+      }
+      60% {
+        transform: scale(1.1);
+      }
+      80% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="proposal-container" data-aos="fade-up">
+    <div>
+      <h1 class="animate__animated animate__fadeInDown">Will You Be Mine?</h1>
+      <p class="animate__animated animate__fadeIn">I can't imagine my life without you. Will you say yes to forever?</p>
+      <button class="btn" id="button1">Yes</button>
+      <button class="btn" id="button2">No</button>
+      <div class="message" id="message">You said YES! ❤️</div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init(); // Initialize AOS
+
+    const button1 = document.getElementById("button1");
+    const button2 = document.getElementById("button2");
+    const message = document.getElementById("message");
+
+    // Function to swap button text between "Yes" and "No"
+    function swapButtons() {
+      if (button1.textContent === "Yes") {
+        button1.textContent = "No";
+        button2.textContent = "Yes";
+        message.classList.add("show");
+      } else {
+        button1.textContent = "Yes";
+        button2.textContent = "No";
+        message.classList.add("show");
+      }
+    }
+
+    // Add event listeners to both buttons
+    button1.addEventListener("click", swapButtons);
+    button2.addEventListener("click", swapButtons);
+  </script>
+
+</body>
+</html>
