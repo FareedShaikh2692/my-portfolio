@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Chat Bot</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Chatbot button */
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        #chatbot-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Chatbot container */
+        #chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Chat header */
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 15px 15px 0 0;
+        }
+
+        /* Close button in header */
+        .close-btn {
+            cursor: pointer;
+            font-size: 18px;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        /* Chat body */
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Chat footer */
+        .chat-footer {
+            display: flex;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-top: 1px solid #ddd;
+            gap: 10px;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-footer button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-footer button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Message styling */
+        .message {
+            padding: 12px;
+            margin-bottom: 5px;
+            border-radius: 12px;
+            max-width: 80%;
+            word-wrap: break-word;
+            font-size: 15px;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bot-message {
+            background-color: #dff1ff;
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+
+        /* Scrollbar styling */
+        .chat-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .chat-body::-webkit-scrollbar-thumb {
+            background-color: #007bff;
+            border-radius: 10px;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 480px) {
+            #chat-container {
+                width: 350px;
+                height:50%;
+                padding: 10px;
+                bottom: 100;
+                right: 0;               
+                background: linear-gradient(145deg, #ffffff, #e6e6e6);
+                border-radius: 15px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+                display: none;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            .chat-header {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .chat-body {
+                padding: 10px;
+            }
+
+            .chat-footer {
+                padding: 8px;
+            }
+
+            .chat-footer input {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .chat-footer button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .message {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<button id="chatbot-button">💬</button>
+
+<div id="chat-container">
+    <div class="chat-header">
+        Chat Bot
+        <button class="close-btn" id="close-btn">✖</button>
+    </div>
+
+    <div class="chat-body" id="chat-body">
+        <div class="message bot-message">Hello! How can I help you?</div>
+    </div>
+
+    <div class="chat-footer">
+        <input type="text" id="user-input" placeholder="Type a message..." />
+        <button id="send-btn">Send</button>
+    </div>
+</div>
+
+<script>
+    // Chatbot button and container
+    const chatbotButton = document.getElementById('chatbot-button');
+    const chatContainer = document.getElementById('chat-container');
+    const closeBtn = document.getElementById('close-btn');
+    
+    // Toggle chatbot visibility on button click
+    chatbotButton.addEventListener('click', function() {
+        chatContainer.style.display = 'flex';
+    });
+
+    // Close chatbot when close button is clicked
+    closeBtn.addEventListener('click', function() {
+        chatContainer.style.display = 'none';
+    });
+
+    const chatBody = document.getElementById("chat-body");
+    const userInput = document.getElementById("user-input");
+    const sendBtn = document.getElementById("send-btn");
+
+    // List of dynamic bot responses
+    const botResponses = [
+        "I'm here to assist you!",
+        "What can I help you with today?",
+        "Can you please clarify that?",
+        "That's interesting, tell me more!",
+        "How about we explore this together?",
+        "I am still learning, but I can try my best to help!"
+    ];
+
+    // Send message function
+    sendBtn.addEventListener("click", function () {
+        const userMessage = userInput.value.trim();
+        if (userMessage !== "") {
+            addMessage(userMessage, "user-message");
+            userInput.value = "";
+
+            // Simulate a dynamic bot response after 1 second
+            setTimeout(() => {
+                const botResponse = getBotResponse(userMessage);
+                addMessage(botResponse, "bot-message");
+            }, 1000);
+        }
+    });
+
+    userInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            sendBtn.click();
+        }
+    });
+
+    // Function to add a message to the chat body
+    function addMessage(message, className) {
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message", className);
+        messageElement.textContent = message;
+        chatBody.appendChild(messageElement);
+        chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to the bottom
+    }
+
+    // Function to generate a dynamic bot response
+    function getBotResponse(userMessage) {
+        if (userMessage.toLowerCase().includes("hello")) {
+            return "Hi! How can I assist you today?";
+        } else if (userMessage.toLowerCase().includes("help")) {
+            return "I’m here to assist you with any questions.";
+        } else {
+            return botResponses[Math.floor(Math.random() * botResponses.length)];
+        }
+    }
+</script>
+
+</body>
+</html>
