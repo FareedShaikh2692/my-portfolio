@@ -122,4 +122,40 @@
   /* Footer year */
   var yearEl = document.getElementById("footerYear");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* Contact form — FormSubmit.co AJAX endpoint */
+  var contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var loadingEl = contactForm.querySelector(".loading");
+      var errorEl = contactForm.querySelector(".error-message");
+      var sentEl = contactForm.querySelector(".sent-message");
+
+      loadingEl.classList.add("d-block");
+      errorEl.classList.remove("d-block");
+      sentEl.classList.remove("d-block");
+
+      fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      })
+        .then(function (response) {
+          loadingEl.classList.remove("d-block");
+          if (response.ok) {
+            sentEl.classList.add("d-block");
+            contactForm.reset();
+          } else {
+            throw new Error("Something went wrong sending your message. Please try emailing directly instead.");
+          }
+        })
+        .catch(function (error) {
+          loadingEl.classList.remove("d-block");
+          errorEl.textContent = error.message || "Something went wrong. Please try emailing directly instead.";
+          errorEl.classList.add("d-block");
+        });
+    });
+  }
 })();
