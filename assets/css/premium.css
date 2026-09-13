@@ -475,7 +475,7 @@ textarea:focus-visible {
   color: var(--text-muted);
   font-size: 0.88rem;
 }
-.hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-meta span { display: inline-flex; align-items: center; gap: 8px; overflow-wrap: anywhere; }
 .hero-meta i { color: var(--accent-2); }
 
 /* Hero terminal / status panel */
@@ -531,8 +531,8 @@ textarea:focus-visible {
   font-family: var(--ff-body);
 }
 .status-row:last-child { border-bottom: none; }
-.status-row .label { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 0.9rem; }
-.status-row .value { color: var(--success); font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.status-row .label { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 0.9rem; min-width: 0; }
+.status-row .value { color: var(--success); font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 6px; flex-shrink: 0; white-space: nowrap; }
 
 .mini-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
 
@@ -645,9 +645,9 @@ textarea:focus-visible {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
-.about-fact i { color: var(--accent-2); font-size: 1.1rem; margin-top: 2px; }
+.about-fact i { color: var(--accent-2); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
 .about-fact .k { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-.about-fact .v { font-size: 0.92rem; color: var(--text-primary); font-weight: 500; }
+.about-fact .v { font-size: 0.92rem; color: var(--text-primary); font-weight: 500; overflow-wrap: anywhere; }
 
 /* ==========================================================================
    Expertise cards
@@ -1181,7 +1181,7 @@ textarea:focus-visible {
   flex-shrink: 0;
 }
 .contact-info-item .k { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; }
-.contact-info-item .v { font-size: 1rem; color: var(--text-primary); font-weight: 500; }
+.contact-info-item .v { font-size: 1rem; color: var(--text-primary); font-weight: 500; overflow-wrap: anywhere; }
 .contact-info-item .v a:hover { color: var(--accent-2); }
 
 .form-grid {
@@ -1346,6 +1346,14 @@ textarea:focus-visible {
   .project-feature-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .arch-node { flex-direction: column; text-align: center; }
+
+  /* Stack the workflow diagram vertically instead of wrapping pills mid-row */
+  .workflow-flow { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .workflow-step { width: 100%; }
+  .workflow-arrow { transform: rotate(90deg); margin: 2px 0 2px 18px; }
+
+  .project-top { flex-direction: column; }
+  .project-role { text-align: left; width: 100%; min-width: 0; }
 }
 
 @media (max-width: 560px) {
@@ -1355,4 +1363,17 @@ textarea:focus-visible {
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-ctas .btn { width: 100%; }
   .timeline-head { flex-direction: column; align-items: flex-start; }
+
+  .about-facts { grid-template-columns: 1fr; }
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .cta-btns .btn { width: 100%; }
+  .footer-inner { flex-direction: column; text-align: center; }
+
+  .status-row { flex-wrap: wrap; row-gap: 4px; }
+  .terminal-body { padding: 22px 18px; }
+}
+
+@media (max-width: 400px) {
+  .logo span:last-child { display: none; }
+  .header-inner { gap: 12px; }
 }
