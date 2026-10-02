@@ -67,6 +67,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#expertise">Expertise</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#side-projects">Side Projects</a></li>
           <li><a href="#approach">Approach</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -97,6 +98,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#expertise">Expertise</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#side-projects">Side Projects</a></li>
         <li><a href="#approach">Approach</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -454,6 +456,106 @@
                 <span class="tech-pill">React Native</span><span class="tech-pill">TypeScript</span>
                 <span class="tech-pill">REST APIs</span><span class="tech-pill">JWT Auth</span>
               </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============== Personal Projects ============== -->
+    <section id="side-projects" class="section section-alt" aria-labelledby="side-projects-title">
+      <div class="container">
+        <div class="section-head centered" data-reveal>
+          <span class="eyebrow">Personal Projects</span>
+          <h2 id="side-projects-title" class="section-title">Things I've built on my own time</h2>
+          <p class="section-desc">Full-stack SaaS products I designed, built and deployed solo, end to end — from database schema to UI to production hosting.</p>
+        </div>
+
+        <!-- Masfira Maison -->
+        <article class="project-block" data-reveal>
+          <div class="project-top">
+            <div>
+              <span class="project-kicker"><i class="bi bi-shop"></i> Personal Project — E-Commerce Platform</span>
+              <h3 class="project-title">Masfira Maison — Bakery Ordering &amp; Admin Platform</h3>
+              <p class="project-tagline">A full-stack ordering platform for a premium home bakery. Customers browse the menu, customise and order cakes, and pay online; the owner runs the entire business from a private admin dashboard.</p>
+              <a href="https://masfiramaison.vercel.app" target="_blank" rel="noopener" class="btn btn-sm btn-outline project-live-link"><i class="bi bi-box-arrow-up-right"></i> View Live</a>
+            </div>
+            <div class="project-role">
+              <div class="k">My Role</div>
+              <div class="v">Designed and built the entire platform solo — frontend, backend, database schema, admin dashboard and deployment.</div>
+            </div>
+          </div>
+
+          <div class="project-columns">
+            <div>
+              <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:14px;">What It Does</h4>
+              <div class="project-feature-grid">
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Live menu with category-based filtering</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Order customisation — flavour, weight, design, delivery zone</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Custom-cake request flow with inspiration photo upload</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Razorpay checkout with server-side signature verification</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Customer reviews with photo upload &amp; verified-purchase badge</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Printable invoices and coupon codes</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Full admin dashboard — orders, products, delivery zones, analytics</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> SEO: sitemap, Open Graph tags, JSON-LD structured data</div>
+              </div>
+            </div>
+
+            <div class="project-side">
+              <h4>Why It's Technically Interesting</h4>
+              <p class="project-why">Migrated from file-based storage to Postgres after Vercel's read-only filesystem crashed order writes in production. Split JWT session verification (Edge-safe) from password hashing (Node-only) to work within Edge Runtime limits, and restructured the app into route groups after public layout elements were leaking into the admin dashboard. Native browser date and select pickers can't be restyled, so I built fully custom replacements instead.</p>
+              <h4>Tech Stack</h4>
+              <div class="tech-stack">
+                <span class="tech-pill">Next.js</span><span class="tech-pill">React</span><span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Tailwind CSS</span><span class="tech-pill">PostgreSQL</span><span class="tech-pill">JWT Auth</span>
+                <span class="tech-pill">Razorpay</span><span class="tech-pill">Anthropic Claude API</span><span class="tech-pill">Vercel</span>
+              </div>
+              <p class="project-note"><i class="bi bi-info-circle"></i> The live demo runs Razorpay in test mode — it's a working checkout integration, not a production payment flow.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Review Engine -->
+        <article class="project-block" data-reveal>
+          <div class="project-top">
+            <div>
+              <span class="project-kicker"><i class="bi bi-star"></i> Personal Project — SaaS Platform</span>
+              <h3 class="project-title">Review Engine — Multi-Tenant Review Management SaaS</h3>
+              <p class="project-tagline">A full-stack SaaS that helps local businesses collect genuine customer reviews through automated review-request campaigns, a visual automation builder, and review analytics — with a separate Super Admin portal for running the platform.</p>
+              <a href="https://reviewengine-xi.vercel.app" target="_blank" rel="noopener" class="btn btn-sm btn-outline project-live-link"><i class="bi bi-box-arrow-up-right"></i> View Live</a>
+            </div>
+            <div class="project-role">
+              <div class="k">My Role</div>
+              <div class="v">Designed and built the entire platform solo — multi-tenant architecture, 60+ API routes, role-based access control, and a separate Super Admin portal.</div>
+            </div>
+          </div>
+
+          <div class="project-columns">
+            <div>
+              <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:14px;">What It Does</h4>
+              <div class="project-feature-grid">
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Business onboarding wizard with live dashboard stats</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> CSV customer import with column mapping &amp; duplicate detection</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Multi-channel review-request campaigns (email, SMS, WhatsApp)</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Drag-and-drop automation builder with branch logic</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Review sentiment &amp; topic analysis</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Role-based team management &amp; plan-based billing</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Separate Super Admin portal with audit logs</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Never auto-submits or hides reviews — fully opt-in by design</div>
+              </div>
+            </div>
+
+            <div class="project-side">
+              <h4>Why It's Technically Interesting</h4>
+              <p class="project-why">Built on a 30+ entity multi-tenant schema where every record is scoped to an organisation, guarded by a permission-based RBAC layer on every write route. Third-party integrations sit behind pluggable adapters with a mock-mode fallback, so the full product is demoable without real credentials. Originally built background jobs on BullMQ/Redis, then re-architected to inline processing plus Vercel Cron after discovering that worker model doesn't run on serverless hosting — removing an entire infrastructure dependency.</p>
+              <h4>Tech Stack</h4>
+              <div class="tech-stack">
+                <span class="tech-pill">Next.js</span><span class="tech-pill">React</span><span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Tailwind CSS</span><span class="tech-pill">PostgreSQL</span><span class="tech-pill">Prisma</span>
+                <span class="tech-pill">Auth.js</span><span class="tech-pill">React Flow</span><span class="tech-pill">Stripe</span>
+                <span class="tech-pill">Twilio</span><span class="tech-pill">Anthropic</span><span class="tech-pill">Vercel Cron</span>
+              </div>
+              <p class="project-note"><i class="bi bi-info-circle"></i> Third-party integrations (email, SMS, AI, billing) run in mock mode on the live demo pending production API keys.</p>
             </div>
           </div>
         </article>
