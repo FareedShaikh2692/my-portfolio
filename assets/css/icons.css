@@ -1,0 +1,34 @@
+@font-face{font-display:swap;font-family:"bootstrap-icons";src:url("../vendor/bootstrap-icons/fonts/bi-subset.woff2") format("woff2")}
+.bi::before,[class^="bi-"]::before,[class*=" bi-"]::before{display:inline-block;font-family:bootstrap-icons!important;font-style:normal;font-weight:400!important;font-variant:normal;text-transform:none;line-height:1;vertical-align:-.125em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.bi-activity::before{content:"\f66b"}
+.bi-arrow-down::before{content:"\f128"}
+.bi-arrow-right::before{content:"\f138"}
+.bi-arrow-up::before{content:"\f148"}
+.bi-box-arrow-up-right::before{content:"\f1c5"}
+.bi-calendar-check::before{content:"\f1e2"}
+.bi-chat-dots::before{content:"\f24a"}
+.bi-check::before{content:"\f26e"}
+.bi-check-circle-fill::before{content:"\f26a"}
+.bi-cloud-arrow-up::before{content:"\f297"}
+.bi-code-slash::before{content:"\f2c6"}
+.bi-cpu::before{content:"\f2d6"}
+.bi-database::before{content:"\f8c4"}
+.bi-diagram-3::before{content:"\f2ee"}
+.bi-download::before{content:"\f30a"}
+.bi-envelope::before{content:"\f32f"}
+.bi-envelope-at::before{content:"\f84c"}
+.bi-geo-alt::before{content:"\f3e8"}
+.bi-linkedin::before{content:"\f472"}
+.bi-mic::before{content:"\f490"}
+.bi-people::before{content:"\f4d0"}
+.bi-person-check::before{content:"\f4d6"}
+.bi-phone::before{content:"\f4e7"}
+.bi-plug::before{content:"\f4f7"}
+.bi-robot::before{content:"\f6b1"}
+.bi-send::before{content:"\f6c0"}
+.bi-server::before{content:"\f52c"}
+.bi-shop::before{content:"\f543"}
+.bi-star::before{content:"\f588"}
+.bi-telephone::before{content:"\f5c1"}
+.bi-telephone-inbound::before{content:"\f5b8"}
+.bi-window::before{content:"\f620"}
