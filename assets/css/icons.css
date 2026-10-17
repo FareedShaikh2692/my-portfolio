@@ -32,3 +32,5 @@
 .bi-telephone::before{content:"\f5c1"}
 .bi-telephone-inbound::before{content:"\f5b8"}
 .bi-window::before{content:"\f620"}
+.bi-apple::before{content:"\f65b"}
+.bi-google-play::before{content:"\f7f7"}
