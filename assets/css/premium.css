@@ -764,6 +764,7 @@ textarea:focus-visible {
   flex-shrink: 0;
   text-align: right;
   min-width: 220px;
+  max-width: 100%;
 }
 .project-role .k { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 6px; }
 .project-role .v { font-size: 0.92rem; color: var(--text-primary); font-weight: 500; }

@@ -565,6 +565,51 @@
               </div>            </div>
           </div>
         </article>
+
+        <!-- AeroSight AI -->
+        <article class="project-block" data-reveal>
+          <div class="project-top">
+            <div>
+              <span class="project-kicker"><i class="bi bi-send"></i> Personal Project — SaaS Platform</span>
+              <h3 class="project-title">AeroSight AI — Drone-Powered Construction Intelligence</h3>
+              <p class="project-tagline">A multi-tenant SaaS platform that turns drone flights into construction intelligence: maps, 3D digital twins, inspections, progress tracking and delay forecasts. It's built for contractors, project managers and site teams who need to see every site and act before schedules slip.</p>
+              <a href="https://aerosight-ai-five.vercel.app" target="_blank" rel="noopener" class="btn btn-sm btn-outline project-live-link"><i class="bi bi-box-arrow-up-right"></i> View Live</a>
+            </div>
+            <div class="project-role">
+              <div class="k">My Role</div>
+              <div class="v">Designed and built it solo, end to end: product documentation (45 docs), architecture, frontend, backend, security model, testing and deployment on Vercel.</div>
+            </div>
+          </div>
+
+          <div class="project-columns">
+            <div>
+              <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:14px;">What It Does</h4>
+              <div class="project-feature-grid">
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Drone mission planning and live operations: grid and orbit flights, server-side geofence, no-fly zone and altitude checks, approval workflow, live telemetry, pause / return-to-home</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> 3D digital twin: CesiumJS globe with asset models that grow along a construction-history timeline, point cloud, flight paths, 3D measurement and saved viewpoints</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> BIM 4D/5D: model elements linked to schedule and budget, plan-vs-built colouring, earned-value metrics (SPI, CPI, EAC) and as-built deviation checks</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Predictive insights: finish-date forecasts with P10/P50/P90 ranges, on-time probability and explainable 0–100 project risk scores</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Inspections and progress: versioned checklist templates, findings with due dates, four-eyes approvals, milestone-weighted progress and S-curves</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Workflow automation: a no-code rules engine with run logs and loop protection</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> AI analysis: Claude-powered progress proposals that a person reviews before they count, report summaries, and a permission-aware assistant</div>
+                <div class="project-feature"><i class="bi bi-check-circle-fill"></i> Enterprise-ready: OIDC single sign-on, SCIM provisioning, two-factor sign-in, signed webhooks, scoped API keys, Procore/Autodesk connectors and SIEM audit export</div>
+              </div>
+            </div>
+
+            <div class="project-side">
+              <h4>Why It's Technically Interesting</h4>
+              <p class="project-why">The hardest problem was making a multi-tenant platform trustworthy when its users span very different roles: owners, pilots, inspectors and outside clients. Every read and write goes through a policy engine with three layers: tenant isolation, a 9-role × 75-permission access matrix, and project-level rules such as "pilots can only fly their assigned missions" and "you can't approve your own inspection". On top sits a SHA-256 hash-chained audit log that makes tampering detectable. Safety-critical features follow the same principle: drone commands need a verified adapter, an organisation setting, a platform-wide kill switch and pilot confirmation; automation rules run with their creator's permissions, re-checked at execution time; and outbound webhooks are guarded against SSRF. For forecasting, a simple velocity trend under-predicts construction projects because they naturally speed up mid-project, so I implemented the Earned Schedule method, measured at the data date so normal reporting lag doesn't read as delay, to produce calibrated P10/P50/P90 finish dates.</p>
+              <h4>Tech Stack</h4>
+              <div class="tech-stack">
+                <span class="tech-pill">Next.js 15</span><span class="tech-pill">React 19</span><span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Tailwind CSS v4</span><span class="tech-pill">CesiumJS</span><span class="tech-pill">MapLibre GL</span>
+                <span class="tech-pill">Anthropic Claude API</span><span class="tech-pill">Zod</span><span class="tech-pill">jose (JWT/JWKS)</span>
+                <span class="tech-pill">Node.js Crypto</span><span class="tech-pill">Server-Sent Events</span><span class="tech-pill">OpenID Connect</span>
+                <span class="tech-pill">SCIM 2.0</span><span class="tech-pill">Open-Meteo API</span><span class="tech-pill">node:test</span>
+                <span class="tech-pill">Vercel</span>
+              </div>            </div>
+          </div>
+        </article>
       </div>
     </section>
 
