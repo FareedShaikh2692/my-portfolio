@@ -1392,3 +1392,12 @@ textarea:focus-visible {
   .logo span:last-child { display: none; }
   .header-inner { gap: 12px; }
 }
+
+/* Education & languages (under the experience timeline) */
+.edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 56px; }
+.edu-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.edu-list li { display: flex; flex-direction: column; gap: 2px; }
+.edu-list strong { color: var(--text-primary); font-size: 0.95rem; font-weight: 600; }
+.edu-list span { color: var(--text-secondary); font-size: 0.9rem; }
+.edu-list em { font-style: normal; color: var(--text-muted); font-size: 0.8rem; }
+@media (max-width: 768px) { .edu-grid { grid-template-columns: 1fr; margin-top: 40px; } }
